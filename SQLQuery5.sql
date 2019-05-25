@@ -1,0 +1,1 @@
+﻿SELECT Magasin FROM VENDEUR 

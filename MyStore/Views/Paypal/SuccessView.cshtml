@@ -1,0 +1,64 @@
+﻿@using MyStore.Models
+@{
+    ViewBag.Title = "SuccessView";
+    MyStoreEntities4 bkk = new MyStoreEntities4();
+    ACHETEUR A = new ACHETEUR();
+    PANIER P = new PANIER();
+    GENRE G = new GENRE();
+    G = bkk.GENRE.Where(x => x.IdPanier == ANDRANA.IDPANIER).First();
+    A = bkk.ACHETEUR.Where(x => x.IdUser == G.IdUser1).First();
+    List<GENRE> GL = new List<GENRE>();
+    GL = bkk.GENRE.Where(x => x.IdPanier == ANDRANA.IDPANIER).ToList();
+    System.Nullable<double> total =
+(from prod in GL
+ select (double)prod.Prix)
+.Sum();
+    double totalUS = Convert.ToDouble(total) / 4000;
+    double VraiTotal = totalUS + 2;
+    double VraiTotalAr = VraiTotal * 4000;
+}
+<div class="alert alert-success" style="width: 40%;margin-left: 30%;margin-top: 20px;">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Success</strong> Votre paiement a été effectué avec succès !!! @*@ViewBag.TS*@
+</div>
+<div class="panel-group" >
+    <div class="panel panel-info" style="width: 40%;margin-left: 30%" >
+        <div class="panel-heading">Nom : @A.Nom @A.Prenom </div>
+        <div class="panel-body" ><br> Adresse : @A.Adresse <br> N°Tel : @A.NumTel <br> E-mail : @A.Email<br></div>
+        <div class="panel-footer"><h4>Total : @total Ar ou @totalUS US </h4>
+        <h4>Taxe : 1 US </h4>
+        <h4>Livraison : 1 US </h4>
+        <h4>Net à payer : @VraiTotalAr Ar ou @VraiTotal US </h4></div>
+    </div>
+</div>
+<div class="container-table-cart pos-relative" style="width: 85%;height:80%;margin-left:100px">
+    <div class="wrap-table-shopping-cart bgwhite">
+        <table class="table-shopping-cart">
+
+            <tr class="table-head">
+
+                <th class="column-1"></th>
+                <th class="column-2">Article </th>
+                <th class="column-3"> Nombre</th>
+                <th class="column-4"> Prix</th>
+            </tr>
+            @foreach (var item in GL)
+            {
+                <tr class="table-row">
+                    <td class="column-1">
+                        <div class="cart-img-product b-rad-4 o-f-hidden">
+                            <img src="@Url.Content(item.Image)" style="width: 60px;height: 80px;" alt="IMG-PRODUCT">
+                        </div>
+                    </td>
+                    <td class="column-2"> @item.NomGenre </td>
+                    <td class="column-3"> @item.NbrGenre </td>
+                    <td class="column-4"> @item.Prix</td>
+                </tr>
+            }
+        </table>
+      
+    </div>
+    
+</div>
+
+

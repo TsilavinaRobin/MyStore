@@ -1,0 +1,1 @@
+﻿UPDATE PANIER SET IdUser='1' where IdPanier='1' 

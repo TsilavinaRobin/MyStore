@@ -1,0 +1,176 @@
+﻿@model MyStore.Models.GENRE
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>GENRE</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NomGenre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomGenre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Taille)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Taille)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Prix)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prix)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ref)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ref)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Couleur)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Couleur)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NbrGenre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NbrGenre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Etat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Etat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdProd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdProd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdPanier)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdPanier)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nouveau)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nouveau)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Reduction)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Reduction)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Prix1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prix1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pour)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pour)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdUser)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdUser)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdCat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdCat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdUser1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdUser1)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

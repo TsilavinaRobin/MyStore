@@ -1,0 +1,106 @@
+﻿@model MyStore.Models.CATEGORIE1
+@using MyStore.Models
+@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.Title = "Categorie1";
+
+}
+@if (ANDRANA.Autorisation == "true")
+
+{
+    @*<h2>Categorie1</h2>*@
+
+    using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+
+      
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    MyStoreEntities4 bd9 = new MyStoreEntities4();
+    List<GENRE> G = new List<GENRE>();
+    G = bd9.GENRE.Where(x => x.IdUser == ANDRANA.IDUSER).ToList();
+
+
+
+    <nav class="menu">
+        <ul class="main_menu">
+
+
+
+            <li>
+                <a href="@Url.Action("Categorie1","LOGIN",new  {III = ANDRANA.IDUSER })">Publier des articles </a>
+            </li>
+            <li>
+                <a href="@Url.Action("Notification","LOGIN",new  {III = ANDRANA.IDUSER})">Les articles commandés<span class="header-icons-noti"style="margin-top: 15px;margin-right: 10px;">@G.Where(x => x.IdUser1!=null).Count()</span></a>
+            </li>
+            <li>
+                <a href="@Url.Action("Index","CRUD",new  {})">Gérer les articles</a>
+            </li>
+
+
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="jumbotron" style="width: 50%;margin-left: 25%;">
+            <h1 style=" margin-left: 45px;">Autorisation</h1>
+            <p>Vous pouvez créer votre propre boutique et publier votre articles</p>
+        </div>
+    </div>
+        <div style="margin-left:34%;" class="bo9 w-size18 p-l-40 p-r-40 p-t-30 p-b-38 m-t-30 m-r-0 m-l-auto p-lr-15-sm">
+            
+                <form class="leave-comment">
+                    <h4  class="m-text26 p-b-36 p-t-15">
+                        Etapes pour publier des articles
+                    </h4>
+                    <div class="form-group">
+                      
+                          
+                            @Html.LabelFor(model => model.NomCat, htmlAttributes: new { @class = "control-label col-md-2" })
+                       
+                    
+                        <div class="col-md-12">
+                            <select class="bo4 of-hidden size15 m-b-20" name="NomCat">
+
+                                @foreach (string c in ViewBag.Cat)
+                                {
+                                    <option value="@c">@c</option>
+                                }
+                                <option value="autre">autre</option>
+                            </select>
+
+                        </div>
+
+                    </div>
+                    <div class="w-size25">
+                        <!-- Button -->
+                        <button type="submit" style="margin-left: 50%; margin-bottom: 30%; margin-top: 30% !important;" id="btn2" class="flex-c-m size2 bg1 bo-rad-23 hov1 m-text3 trans-0-4">
+                            Suivant >> 
+                        </button>
+
+                    </div>
+                    @*<div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Ajouter" class="btn btn-default" />
+                        </div>
+                    </div>*@
+            </form>
+        </div>
+       
+
+    }
+
+           
+            }
+            else
+            {
+            <div class="container">
+                <div class="jumbotron">
+                    <h1>Autorisation</h1>
+                    <p>Vous devez negocier avec l'administrateur de ce site pour pouvoir publier des articles</p>
+                </div>
+            </div>
+            }

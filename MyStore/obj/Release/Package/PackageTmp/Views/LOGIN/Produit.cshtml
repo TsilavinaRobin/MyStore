@@ -1,0 +1,33 @@
+﻿@model MyStore.Models.CATEGORIE1
+
+@{
+    ViewBag.Title = "Produit";
+}
+
+<h2>Produit</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div style="margin-left:34%;" class="bo9 w-size18 p-l-40 p-r-40 p-t-30 p-b-38 m-t-30 m-r-0 m-l-auto p-lr-15-sm">
+
+        <form class="leave-comment">
+            <h4 class="m-text26 p-b-36 p-t-15">
+                Etapes pour publier des articles
+            </h4>
+            <div class="bo4 of-hidden size15 m-b-20">
+                <input class="sizefull s-text7 p-l-22 p-r-22" type="text" name="NomCat" placeholder="Nom de votre nouvelle categorie" required>
+            </div>
+            <div class="w-size25">
+                <button type="submit" style="margin-left: 50%; margin-bottom: 30%; margin-top: 30% !important;" id="btn2" class="flex-c-m size2 bg1 bo-rad-23 hov1 m-text3 trans-0-4">
+                    Suivant >>
+                </button>
+            </div>
+        </form>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

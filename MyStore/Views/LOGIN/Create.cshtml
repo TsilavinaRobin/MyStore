@@ -1,0 +1,123 @@
+﻿@model MyStore.Models.LOGIN
+
+@{
+    ViewBag.Title = "Create";
+}
+@*<ul id="navC" class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("S’inscrire", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li id="log">@Html.ActionLink("Se connecter", "Create", "LOGIN", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+    <ul id="navB" class="nav navbar-nav navbar-right">
+        <li id="SSS">@Html.ActionLink("S’inscrire", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li id="log">@Html.ActionLink("Se Deconnecter", "Create", "LOGIN", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>*@
+@*<h2>Create</h2>*@
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @*<div class="form-horizontal">*@
+    @*<h4>LOGIN</h4>*@
+
+    @*<hr />*@
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Mdp, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Mdp, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Mdp, "", new { @class = "text-danger" })
+
+                    <p class="text-danger">@ViewBag.MonParam3</p>
+                    <input type="radio" name="Type" value="Vendeur" checked> Vendeur<br>
+                    <input type="radio" name="Type" value="Admin"> Administrateur<br>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+
+                    <input type="submit" value="Connexion" id="btn2" class="btn btn-default" />
+                </div>
+            </div>*@
+ if( ViewBag.log == "vb")
+    {
+
+<div class="alert alert-success" style="width: 40%;margin-left: 30%;margin-top: 20px;">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Success!</strong> Votre compte est crée avec succès!!Maintenant,vous pouvez s'authentifier 
+</div>
+    }
+    <div style="height: 450px;margin-right:33%;" class="bo9 w-size18 p-l-40 p-r-40 p-t-30 p-b-38 m-t-30 m-r-0 m-l-auto p-lr-15-sm" >
+        <div class="col-md-6 p-b-30">
+            <form class="leave-comment">
+                <h4 style="margin-left: 50px;" class="m-text26 p-b-36 p-t-15">
+                    Authentification
+                </h4>
+
+                <div style="width: 210%;" class="bo4 of-hidden size15 m-b-20">
+                    <input class="sizefull s-text7 p-l-22 p-r-22" type="text" name="Email" placeholder="E-mail">
+                </div>
+
+                <div style="width: 210%;"  class="bo4 of-hidden size15 m-b-20">
+                    <input class="sizefull s-text7 p-l-22 p-r-22" type="password" name="Mdp" placeholder="mot de passe">
+                </div>
+
+                <p class="text-danger">@ViewBag.MonParam3</p>
+               
+
+                    <div class="w-size25">
+                        <!-- Button -->
+                        <button type="submit" style="margin-left: 50%; margin-bottom: 30%; margin-top: 30% !important;"  id="btn2" class="flex-c-m size2 bg1 bo-rad-23 hov1 m-text3 trans-0-4">
+                            Connection
+                        </button>
+                      
+                    </div>
+                <div class="w-size25" style="font-size: x-small;">
+                    <input type="radio" name="Type" value="Vendeur" checked> Vendeur<br>
+                    <input type="radio" name="Type" value="Admin"> Administrateur<br>
+                </div>
+            
+                     
+</form>
+        </div>
+    </div>
+}
+@*<a style="margin-left:43%;" href="@Url.Action("Create","VENDEUR",new  { })">Créer un nouveau compte</a>*@ 
+
+<a style="margin-left:43%;" href="" data-toggle="modal" data-target="#myModal">Créer un nouveau compte</a>
+@*<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>*@
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog" style="margin-left: -200PX;margin-top: 105px;">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Contrat</h4>
+            </div>
+            <div class="modal-body">
+                <p>Vous pouvez créer un compte en tant que vendeur gratuitement.Mais,vous devez negocier à l'administrateur de ce site pour pouvoir publier des articles.</p>
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-info "  href="@Url.Action("Create","VENDEUR",new  {@*@NumMateriel=@Model.Rows[i][0]*@ })">Accepter</a> 
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+ 
+
+    
+

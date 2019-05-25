@@ -1,0 +1,202 @@
+﻿@model MyStore.Models.VENDEUR1
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@*<h2>Create</h2>*@
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @*<div class="form-horizontal">*@        @*<h4>VENDEUR</h4>*@
+        @*<hr />*@
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.Nom, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Nom, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Nom, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Prenom, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Prenom, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Prenom, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DateNaiss, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DateNaiss, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DateNaiss, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Magasin, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Magasin, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Magasin, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Contact, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Contact, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Contact, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Lieu, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Lieu, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Lieu, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Mdp, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Mdp, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Mdp, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CMdp, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CMdp, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CMdp, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Creer un compte" class="btn btn-default" />
+             
+            </div>
+        </div>*@
+    <div style="margin-left:34%;height: 900px;" class="bo9 w-size18 p-l-40 p-r-40 p-t-30 p-b-38 m-t-30 m-r-0 m-l-auto p-lr-15-sm">
+        <div class="col-md-6 p-b-30">
+            <form class="leave-comment">
+                <h4 style="margin-left: 40%;" class="m-text26 p-b-36 p-t-15">
+                    Création du compte
+                </h4>
+
+                <div style="width: 210%;" class="bo4 of-hidden size15 m-b-20">
+                    <input class="sizefull s-text7 p-l-22 p-r-22" type="text" name="Nom" placeholder="Nom" required>
+                </div>
+
+                <div style="width: 210%;" class="bo4 of-hidden size15 m-b-20">
+                    <input class="sizefull s-text7 p-l-22 p-r-22" type="text" name="Prenom" placeholder="Prenom" required>
+                </div>
+
+                <ul class="flex-w" style="margin-bottom: 20px;width: 200%;font-family: Montserrat-Regular;font-size: 13px;color: #555555;line-height: 1.8;">
+                    <li class="m-r-10">
+
+                        Date de naissance :
+                    </li>
+
+                    <li class="m-r-10">
+
+                        <input class="" type="date" name="DateNaiss" placeholder="Prenom">
+                    </li>
+                </ul>
+                <div class="checkbox">
+                    <label><input id="check1" type="checkbox"> Pas de boutique ?</label>
+                </div>
+                <div id="Reduction1" style="width: 210%;" class="bo4 of-hidden size15 m-b-20">
+                    <input class="sizefull s-text7 p-l-22 p-r-22" type="text" name="Magasin" placeholder="Boutique" >
+                </div>
+                
+               
+                <div style="width: 210%;" class="bo4 of-hidden size15 m-b-20">
+                    <input class="sizefull s-text7 p-l-22 p-r-22" type="email" name="Email" placeholder="Email" required>
+                </div>
+
+                <div style="width: 210%;" class="bo4 of-hidden size15 m-b-20">
+                    <input class="sizefull s-text7 p-l-22 p-r-22" type="text" name="Contact" placeholder="N°Telephone" required>
+                </div>
+                <div style="width: 210%;" class="bo4 of-hidden size15 m-b-20">
+                    <input class="sizefull s-text7 p-l-22 p-r-22" type="text" name="Lieu" placeholder="Lieu" required>
+                </div>
+                <div style="width: 210%;" class="bo4 of-hidden size15 m-b-20">
+                    <input class="sizefull s-text7 p-l-22 p-r-22" type="password" name="Mdp" placeholder="Mot de passe" required>
+                </div>
+                <div style="width: 210%;" class="bo4 of-hidden size15 m-b-20">
+                    <input class="sizefull s-text7 p-l-22 p-r-22" type="password" name="CMdp" placeholder="Confirmation de Mot de passe" required>
+                </div>
+                <p class="text-danger">@ViewBag.Erreur</p>
+
+
+
+                <div class="w-size25">
+                    <!-- Button -->
+                    <button type="submit" style="margin-left: 50%; margin-bottom: 30%; margin-top: 30% !important;" id="btn2" class="flex-c-m size2 bg1 bo-rad-23 hov1 m-text3 trans-0-4">
+                        Créer un compte
+                    </button>
+
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+}
+    
+      
+
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+<!--===============================================================================================-->
+<script type="text/javascript" src="~/Content/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+<script type="text/javascript" src="~/Content/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+<script type="text/javascript" src="~/Content/vendor/bootstrap/js/popper.js"></script>
+<script type="text/javascript" src="~/Content/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+<script type="text/javascript" src="~/Content/vendor/select2/select2.min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        // alert("tokon");
+       // $("#Reduction").hide();
+        $("#check1").click(function () {
+
+             $("#Reduction1").hide(1000);
+        });
+    });
+</script>
+<!--===============================================================================================-->
+<script type="text/javascript" src="~/Content/vendor/daterangepicker/moment.min.js"></script>
+<script type="text/javascript" src="~/Content/vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+<script type="text/javascript" src="~/Content/vendor/slick/slick.min.js"></script>
+<script type="text/javascript" src="~/Content/js/slick-custom.js"></script>
+<!--===============================================================================================-->
+<script type="text/javascript" src="~/Content/vendor/sweetalert/sweetalert.min.js"></script>
+
+
+<!--===============================================================================================-->
+<script type="text/javascript" src="~/Content/vendor/noui/nouislider.min.js"></script>
+
+<!--===============================================================================================-->
+<script src="~/Content/js/main.js"></script>

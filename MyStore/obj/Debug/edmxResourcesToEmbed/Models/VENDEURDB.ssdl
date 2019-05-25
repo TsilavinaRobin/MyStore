@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MyStoreModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="VENDEUR">
+    <Key>
+      <PropertyRef Name="IdUser" />
+    </Key>
+    <Property Name="IdUser" Type="int" Nullable="false" />
+    <Property Name="Nom" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Prenom" Type="nvarchar" MaxLength="50" />
+    <Property Name="DateNaiss" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Mdp" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Magasin" Type="nvarchar" MaxLength="50" />
+    <Property Name="Contact" Type="nvarchar" MaxLength="50" />
+    <Property Name="Type" Type="nvarchar" MaxLength="50" />
+    <Property Name="Autorisation" Type="nvarchar" MaxLength="50" />
+    <Property Name="Lieu" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityContainer Name="MyStoreModelStoreContainer">
+    <EntitySet Name="VENDEUR" EntityType="Self.VENDEUR" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

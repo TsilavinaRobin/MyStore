@@ -1,0 +1,1 @@
+﻿INSERT INTO GENRE (IdGenre, NomGenre,Image, Taille,Prix,Ref,Description,Couleur,NbrGenre,Etat,IdProd) VALUES ('1', 'Tee-shirt','~/Image/image.jpg','xl','20000','3','mafinaritra','rouge','2','tsy lafo','1'); 

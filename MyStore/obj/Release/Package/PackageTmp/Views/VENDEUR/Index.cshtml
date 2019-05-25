@@ -1,0 +1,129 @@
+﻿
+@model PagedList.IPagedList<MyStore.Models.VENDEUR>
+@using PagedList.Mvc;
+@using MyStore.Models
+@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.Title = "Index";
+}
+<nav class="menu">
+    <ul class="main_menu">
+       
+             
+
+            <li>
+                <a href="@Url.Action("Index","VENDEUR",new  {})" >Liste des vendeurs</a>
+            </li>
+            <li>
+                <a href="@Url.Action("Article","VENDEUR",new  {})">Gerer les articles</a>
+            </li>
+
+            
+        </ul>
+    </nav>
+<h2></h2>
+
+@*<p>
+    @Html.ActionLink("Verifier les articles", "Article")
+</p>*@
+@*<table class="table">
+    <tr>
+
+        <th> Nom </th>
+        <th> Prénom</th>
+        <th> Date de naissance</th>
+        <th> Boutique</th>
+        <th> Contact</th>
+        <th> Email</th>
+       
+      
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Prenom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateNaiss)
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.Magasin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Contact)
+        </td>
+      
+        <td>
+            @Html.DisplayFor(modelItem => item.Lieu)
+        </td>
+        
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdUser }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdUser }) |
+           @Html.ActionLink("Autoriser", "Autoriser", new { id = item.IdUser })
+        </td>
+     
+    </tr>
+}
+
+</table>*@
+@if (ViewBag.Mon == "L'utilisateur est autorisé succès!!"|| ViewBag.Mon== "L'utilisateur est Bloqué succès!!")
+{
+
+    <div class="alert alert-success" style="width: 40%;margin-left: 30%;margin-top: 20px;">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Success!</strong> @ViewBag.Mon
+    </div>
+}
+<div class="container-table-cart pos-relative"style="width: 85%;height:80%;margin-left:100px">
+    <div class="wrap-table-shopping-cart bgwhite">
+        <table class="table-shopping-cart">
+
+            <tr class="table-head">
+                
+                <th class="column-1">Nom</th>
+                <th class="column-2"> Prénom </th>
+                <th class="column-3"> Date de naissance</th>
+                <th class="column-4"> Boutique</th>
+                <th class="column-4">Contact</th>
+                <th class="column-4">Email</th>
+            </tr>
+           @foreach (var item in Model)
+           {
+               
+
+
+                <tr class="table-row">
+                    <td class="column-1">
+                       @item.Nom
+                    </td>
+                    <td class="column-2"> @item.Prenom </td>
+                 
+                        <td class="column-3"> @item.DateNaiss </td>
+                    
+                   
+                    <td class="column-4"> @item.Magasin</td>
+                    <td class="column-4"> @item.Contact</td>
+                    <td class="column-4"> @item.Email</td>
+                    <td class="column-3"> <a href="@Url.Action("Autoriser","VENDEUR",new  {@Id= item.IdUser })" class="btn btn-primary">Autoriser</a></td>
+                    <td class="column-3"> <a href="@Url.Action("Bloquer","VENDEUR",new  {@Id= item.IdUser })" class="btn btn-danger">Bloquer</a></td>
+
+
+                </tr>
+
+            }
+        </table>
+      
+    </div>
+</div>
+<h6>
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) sur @Model.PageCount
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+</h6>

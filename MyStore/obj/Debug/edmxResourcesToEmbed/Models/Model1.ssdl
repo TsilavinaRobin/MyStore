@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MyStoreModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ACHETEUR">
+    <Key>
+      <PropertyRef Name="IdUser" />
+    </Key>
+    <Property Name="IdUser" Type="int" Nullable="false" />
+    <Property Name="Nom" Type="nvarchar" MaxLength="50" />
+    <Property Name="Prenom" Type="nvarchar" MaxLength="50" />
+    <Property Name="DateNaiss" Type="nvarchar" MaxLength="50" />
+    <Property Name="Adresse" Type="nvarchar" MaxLength="50" />
+    <Property Name="NumTel" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="CATEGORIE">
+    <Key>
+      <PropertyRef Name="IdCat" />
+    </Key>
+    <Property Name="IdCat" Type="int" Nullable="false" />
+    <Property Name="NomCat" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IdUser" Type="int" />
+  </EntityType>
+  <EntityType Name="GENRE">
+    <Key>
+      <PropertyRef Name="IdGenre" />
+    </Key>
+    <Property Name="IdGenre" Type="int" Nullable="false" />
+    <Property Name="NomGenre" Type="nvarchar" MaxLength="50" />
+    <Property Name="Image" Type="varchar(max)" />
+    <Property Name="Taille" Type="nvarchar" MaxLength="50" />
+    <Property Name="Prix" Type="float" />
+    <Property Name="Ref" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="Couleur" Type="nvarchar" MaxLength="50" />
+    <Property Name="NbrGenre" Type="int" />
+    <Property Name="Etat" Type="nvarchar" MaxLength="50" />
+    <Property Name="IdProd" Type="int" />
+    <Property Name="IdPanier" Type="int" />
+    <Property Name="Nouveau" Type="nvarchar" MaxLength="50" />
+    <Property Name="Reduction" Type="float" />
+    <Property Name="Prix1" Type="float" />
+    <Property Name="Pour" Type="nvarchar" MaxLength="50" />
+    <Property Name="Date" Type="nvarchar" MaxLength="50" />
+    <Property Name="IdUser" Type="int" />
+    <Property Name="IdCat" Type="int" />
+    <Property Name="IdUser1" Type="int" />
+    <Property Name="NbrAch" Type="int" />
+  </EntityType>
+  <EntityType Name="PANIER">
+    <Key>
+      <PropertyRef Name="IdPanier" />
+    </Key>
+    <Property Name="IdPanier" Type="int" Nullable="false" />
+    <Property Name="NbrProPanier" Type="int" />
+    <Property Name="DateAchat" Type="nvarchar" MaxLength="50" />
+    <Property Name="PrixTotal" Type="float" />
+    <Property Name="IdUser" Type="int" />
+    <Property Name="Livraison" Type="float" />
+  </EntityType>
+  <EntityType Name="PRODUIT">
+    <Key>
+      <PropertyRef Name="IdProd" />
+    </Key>
+    <Property Name="IdProd" Type="int" Nullable="false" />
+    <Property Name="NomPro" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="NbrPro" Type="int" />
+    <Property Name="IdCat" Type="int" />
+  </EntityType>
+  <EntityType Name="VENDEUR">
+    <Key>
+      <PropertyRef Name="IdUser" />
+    </Key>
+    <Property Name="IdUser" Type="int" Nullable="false" />
+    <Property Name="Nom" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Prenom" Type="nvarchar" MaxLength="50" />
+    <Property Name="DateNaiss" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Mdp" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Magasin" Type="nvarchar" MaxLength="50" />
+    <Property Name="Contact" Type="nvarchar" MaxLength="50" />
+    <Property Name="Type" Type="nvarchar" MaxLength="50" />
+    <Property Name="Autorisation" Type="nvarchar" MaxLength="50" />
+    <Property Name="Lieu" Type="nvarchar" MaxLength="50" />
+    <Property Name="IdCat" Type="int" />
+  </EntityType>
+  <EntityContainer Name="MyStoreModelStoreContainer">
+    <EntitySet Name="ACHETEUR" EntityType="Self.ACHETEUR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CATEGORIE" EntityType="Self.CATEGORIE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GENRE" EntityType="Self.GENRE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PANIER" EntityType="Self.PANIER" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PRODUIT" EntityType="Self.PRODUIT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VENDEUR" EntityType="Self.VENDEUR" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

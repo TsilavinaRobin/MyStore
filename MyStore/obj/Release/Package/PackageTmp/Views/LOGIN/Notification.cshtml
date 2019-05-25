@@ -1,0 +1,198 @@
+﻿
+@model PagedList.IPagedList<MyStore.Models.GENRE>
+@using PagedList.Mvc;
+@using MyStore.Models
+@using Microsoft.AspNet.Identity
+@{
+    ViewBag.Title = "Notification";
+}
+@{
+    MyStoreEntities4 bd9 = new MyStoreEntities4();
+    ACHETEUR A = new ACHETEUR();
+    PANIER P = new PANIER();
+    List<GENRE> G = new List<GENRE>();
+    G = bd9.GENRE.Where(x => x.IdUser == ANDRANA.IDUSER).ToList();
+    string i;
+
+}
+
+<nav class="menu">
+    <ul class="main_menu">
+
+
+
+        <li>
+            <a href="@Url.Action("Categorie1","LOGIN",new  {III = ANDRANA.IDUSER })">Publier des articles </a>
+        </li>
+        <li>
+            <a href="@Url.Action("Notification","LOGIN",new  {III = ANDRANA.IDUSER})">Les articles commandés<span class="header-icons-noti" style="margin-top: 15px;margin-right: 10px;">@G.Where(x => x.IdUser1 != null).Count()</span></a>
+        </li>
+
+
+    </ul>
+</nav>
+
+ @if( ViewBag.l == "vb")
+    {
+
+<div class="alert alert-success" style="width: 40%;margin-left: 30%;margin-top: 20px;">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Success!</strong> Livraison avec succès!!
+</div>
+    }
+@*<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NomGenre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Image)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Taille)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Prix)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ref)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Couleur)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NbrGenre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Etat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdProd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdPanier)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nouveau)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Reduction)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Prix1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pour)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdUser)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdCat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdUser1)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.Where(x => x.IdUser1!=null)) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NomGenre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Image)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Taille)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Prix)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ref)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Couleur)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NbrGenre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Etat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdProd)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdPanier)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nouveau)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Reduction)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Prix1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pour)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdUser)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdCat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdUser1)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdGenre }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdGenre }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdGenre })
+        </td>
+    </tr>
+}
+
+</table>*@
+
+
+@foreach (var item in Model.Where(x =>x.IdUser1!=null))
+{
+
+
+        <div class="panel-group" style="width: 50%;margin-left: 25%;">
+            <div class="panel panel-info" style="width: 75%;margin-left: 15%;">
+                <div class="panel-heading">Nom de l'article : @item.NomGenre </div>
+
+                <div class="panel-body"><img src="@Url.Content(item.Image)" style="width: 60px;height: 80px;" alt="IMG-PRODUCT"><br> Prix total : @item.Prix Ar <br> Ref : @item.Ref </div>
+                @{
+                    A = bd9.ACHETEUR.Where(x => x.IdUser == item.IdUser1).First();
+                    P=bd9.PANIER.Where(x => x.IdUser == item.IdUser1).First();
+                 }
+                <div class="panel-body" style="width: 50%; margin-left: 50%; margin-top: -180px;margin-bottom: 20px;"><br> L'acheteur : @A.Nom  <br> Adresse : @A.Adresse <br> N°Tel : @A.NumTel <br> E-mail : @A.Email<br>@if (P.Livraison != 0) {  i = "avec livraison"; } else {  i = " à recuperé"; } @i   </div>
+                <div class="panel-footer"> <a href="@Url.Action("Livrer","LOGIN",new  {id = item.IdGenre})" style="margin-left: 75%;" class="btn btn-info">Livrer</a></div>
+            </div>
+        </div>
+    }
+
+<h6>
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) sur @Model.PageCount
+    @Html.PagedListPager(Model, page => Url.Action("Notification",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter , III = ANDRANA.IDUSER }))
+</h6>

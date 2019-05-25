@@ -1,0 +1,107 @@
+﻿@model PagedList.IPagedList<MyStore.Models.PANIER>
+@using PagedList.Mvc;
+@using MyStore.Models
+@using Microsoft.AspNet.Identity
+@{
+    ViewBag.Title = "Article";
+}
+<nav class="menu">
+    <ul class="main_menu">
+
+
+
+        <li>
+            <a href="@Url.Action("Index","VENDEUR",new  {})">Liste des vendeurs</a>
+        </li>
+        <li>
+            <a href="@Url.Action("Article","VENDEUR",new  {})">Gerer les articles</a>
+        </li>
+
+
+    </ul>
+</nav>
+ @if(ViewBag.Mon == "La livraison de votre article est effectuée avec succèes!!")
+    {
+
+<div class="alert alert-success" style="width: 40%;margin-left: 30%;margin-top: 20px;">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Success!</strong> @ViewBag.Mon
+</div>
+    }
+<h4 style="margin-left: 40%;margin-bottom: 20px;">Listes des paniers par acheteurs :</h4>
+@{
+    MyStoreEntities4 db = new MyStoreEntities4();
+
+    List<ACHETEUR> AcheteurList = new List<ACHETEUR>();
+
+    AcheteurList = db.ACHETEUR.ToList();
+    AcheteurList.Reverse();
+}
+@foreach (var e in AcheteurList)
+{
+    @*<h6> @e.Nom </h6>*@
+
+
+    MyStoreEntities4 db1 = new MyStoreEntities4();
+
+    List<PANIER> PanierList = new List<PANIER>();
+
+    PanierList = db1.PANIER.Where(x => x.IdUser == e.IdUser).ToList();
+    foreach (var a in PanierList)
+    {
+        @*<h6> Nombre: @a.NbrProPanier Date:@a.DateAchat Montant: @a.PrixTotal @a.Livraison </h6> @Html.ActionLink("Livrer", "Livrer", new { id = a.IdPanier })*@
+
+<div class="panel-group" style="width: 50%;margin-left: 25%;">
+    <div class="panel panel-info">
+        <div class="panel-heading">Nom de l'acheteur : @e.Nom </div>
+   
+        <div class="panel-body">Nombres des articles commandés : @a.NbrProPanier<br> Prix total : @a.PrixTotal Ar <br>Frais de livraison : @a.Livraison Ar</div>
+        <div class="panel-footer">@a.DateAchat @*@Html.ActionLink("Livrer", "Livrer", new { id = a.IdPanier })*@<a href="@Url.Action("Livrer","VENDEUR",new  {id = a.IdPanier})" style="margin-left: 75%;" class="btn btn-info">Livrer</a></div>
+    </div>
+</div>
+    }
+}
+<h2>Article</h2>
+
+
+
+<table class="table">
+    <tr>
+        <th>
+            Nombre des articles
+        </th>
+        <th>
+            Date d'achat
+        </th>
+        <th>
+          Montant
+        </th>
+        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NbrProPanier)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateAchat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PrixTotal)
+        </td>
+       
+        <td>
+            @Html.ActionLink("Livrer", "Livrer", new { id=item.IdPanier })
+         
+        </td>
+    </tr>
+}
+
+</table>
+<h6>
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) sur @Model.PageCount
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+</h6>

@@ -1,0 +1,39 @@
+﻿@using MyStore.Models
+@using Microsoft.AspNet.Identity
+@using MyStore.Controllers
+
+@{
+    //LOGINController v = new LOGINController();
+ 
+   
+   
+
+}
+@if (ANDRANA.Nom==true)
+
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+    @Html.AntiForgeryToken()
+
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            
+            @Html.ActionLink("Bonjour  "+ANDRANA.Name+"  " + ANDRANA.Type + "!  "+ ANDRANA.Autorisation+ "", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+        </li>
+        <li><a href="javascript:document.getElementById('logoutForm').submit()">Se déconnecter</a></li>
+    </ul>
+    }
+}
+else
+{
+   
+    <ul id="navC" class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("S’inscrire", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li id="log">@Html.ActionLink("Se connecter", "Create", "LOGIN", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+    @*<ul id="navB" class="nav navbar-nav navbar-right">
+        <li id="SSS">@Html.ActionLink("S’inscrire", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li id="log">@Html.ActionLink("Se Deconnecter", "Create", "LOGIN", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>*@
+}

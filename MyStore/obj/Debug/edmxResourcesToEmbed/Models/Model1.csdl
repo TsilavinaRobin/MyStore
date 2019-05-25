@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MyStoreModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ACHETEUR">
+    <Key>
+      <PropertyRef Name="IdUser" />
+    </Key>
+    <Property Name="IdUser" Type="Int32" Nullable="false" />
+    <Property Name="Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Prenom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DateNaiss" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Adresse" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NumTel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="CATEGORIE">
+    <Key>
+      <PropertyRef Name="IdCat" />
+    </Key>
+    <Property Name="IdCat" Type="Int32" Nullable="false" />
+    <Property Name="NomCat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IdUser" Type="Int32" />
+  </EntityType>
+  <EntityType Name="GENRE">
+    <Key>
+      <PropertyRef Name="IdGenre" />
+    </Key>
+    <Property Name="IdGenre" Type="Int32" Nullable="false" />
+    <Property Name="NomGenre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Taille" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Prix" Type="Double" />
+    <Property Name="Ref" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Couleur" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NbrGenre" Type="Int32" />
+    <Property Name="Etat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IdProd" Type="Int32" />
+    <Property Name="IdPanier" Type="Int32" />
+    <Property Name="Nouveau" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Reduction" Type="Double" />
+    <Property Name="Prix1" Type="Double" />
+    <Property Name="Pour" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IdUser" Type="Int32" />
+    <Property Name="IdCat" Type="Int32" />
+    <Property Name="IdUser1" Type="Int32" />
+    <Property Name="NbrAch" Type="Int32" />
+  </EntityType>
+  <EntityType Name="PANIER">
+    <Key>
+      <PropertyRef Name="IdPanier" />
+    </Key>
+    <Property Name="IdPanier" Type="Int32" Nullable="false" />
+    <Property Name="NbrProPanier" Type="Int32" />
+    <Property Name="DateAchat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PrixTotal" Type="Double" />
+    <Property Name="IdUser" Type="Int32" />
+    <Property Name="Livraison" Type="Double" />
+  </EntityType>
+  <EntityType Name="PRODUIT">
+    <Key>
+      <PropertyRef Name="IdProd" />
+    </Key>
+    <Property Name="IdProd" Type="Int32" Nullable="false" />
+    <Property Name="NomPro" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NbrPro" Type="Int32" />
+    <Property Name="IdCat" Type="Int32" />
+  </EntityType>
+  <EntityType Name="VENDEUR">
+    <Key>
+      <PropertyRef Name="IdUser" />
+    </Key>
+    <Property Name="IdUser" Type="Int32" Nullable="false" />
+    <Property Name="Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Prenom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DateNaiss" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Mdp" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Magasin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Contact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Autorisation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Lieu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IdCat" Type="Int32" />
+  </EntityType>
+  <EntityContainer Name="MyStoreEntities4" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ACHETEUR" EntityType="Self.ACHETEUR" />
+    <EntitySet Name="CATEGORIE" EntityType="Self.CATEGORIE" />
+    <EntitySet Name="GENRE" EntityType="Self.GENRE" />
+    <EntitySet Name="PANIER" EntityType="Self.PANIER" />
+    <EntitySet Name="PRODUIT" EntityType="Self.PRODUIT" />
+    <EntitySet Name="VENDEUR" EntityType="Self.VENDEUR" />
+  </EntityContainer>
+</Schema>

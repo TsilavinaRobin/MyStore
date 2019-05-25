@@ -1,0 +1,1 @@
+﻿Select NomGenre, Image, Prix from GENRE

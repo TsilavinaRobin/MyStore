@@ -1,0 +1,441 @@
+﻿@using MyStore.Models
+@using Microsoft.AspNet.Identity
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>MyStore</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="~/Content/images/icons/favicon.png" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/vendor/bootstrap/css/bootstrap.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/fonts/themify/themify-icons.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/fonts/elegant-font/html-css/style.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/vendor/slick/slick.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/vendor/lightbox2/css/lightbox.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/css/util.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/css/main.css">
+    <!--===============================================================================================-->
+
+</head>
+<body class="animsition">
+    <header class="header1" >
+        <!-- Header desktop -->
+        <div class="container-menu-header">
+            @*<div class="topbar" style="background-color: #fefefe;">
+               
+            </div>*@
+
+            <div class="wrap_header" style="background-color: #ffc72a;">
+                <!-- Logo -->
+                @*<a href="index.html" class="logo">*@
+                    <img src="~/Image/mystore.jpg" alt="IMG-LOGO" width="50" height="60" style="margin-right: 40%;margin-left: -20%;">
+                @*</a>*@
+
+                <!-- Menu -->
+                <div class="wrap_menu" style="margin-left: -25%;">
+                    <nav class="menu">
+                        <ul class="main_menu">
+                            <li>
+                                <a href="#">@Html.ActionLink("Accueil", "Index1", "ACCUEIL")</a>
+
+                            </li>
+
+                            <li>
+                                <a href="#">Boutique</a>
+                                <ul class="sub_menu">
+                                    @{
+                                        MyStoreEntities4 db = new MyStoreEntities4();
+                                        List<VENDEUR> GenreList = new List<VENDEUR>();
+                                        GenreList = db.VENDEUR.ToList();
+                                     }
+@if (GenreList != null)
+{
+    foreach (VENDEUR c in GenreList)
+    {
+        if (c.Magasin != null) { 
+        <li style="margin-top: -20px;">
+            <a id="vrai" href="@Url.Action("Index1","ACCUEIL",new  {@IdUser=c.IdUser})">
+                @c.Magasin
+            </a>
+        </li>
+        }
+    }
+}
+                              
+                                </ul>
+                              
+
+                            
+
+                              
+
+                                <li>
+                                   
+                                    @if (ANDRANA.IDUSER != 0)
+                                    {
+                                        <a href="@Url.Action("Categorie1", "LOGIN")">Gestion des articles</a>
+                                    }
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Apropos", "ACCUEIL")">A propos</a>
+                                   
+                                </li>
+
+                                <li>
+                                    <a href="@Url.Action("Contact", "ACCUEIL")">Contact</a>
+                                   
+                                </li>
+                            </ul>
+                    </nav>
+                </div>
+
+                <!-- Header Icon -->
+                <div class="header-icons">
+           
+                    <span class="linedivide1"></span>
+                                        @if (ANDRANA.IDUSER == 0)
+                                        {
+                                           
+                                                <a href="@Url.Action("Create","LOGIN",new  {@*@NumMateriel=@Model.Rows[i][0]*@ })" class="header-wrapicon1 dis-block">
+                                                    Connexion 
+                                                </a> 
+                                               
+                                        }
+                                        else
+                                        {
+                                            
+                                                <a href="@Url.Action("Deconnexion","LOGIN",new  {@*@NumMateriel=@Model.Rows[i][0]*@ })" class="header-wrapicon1 dis-block">
+                                                   Deconnexion 
+                                                </a>
+
+                                            @*<a href="@Url.Action("Deconnexion","LOGIN",new  {@ })" class="header-wrapicon1 dis-block">
+                                                    <img src="~/Content/images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
+                                                </a>*@
+                                        }
+                    <span class="linedivide1"></span> 
+                                                
+
+                                              @{ 
+                                                  MyStoreEntities4 db11 = new MyStoreEntities4();
+
+                                                  List<GENRE> PanLisL = new List<GENRE>();
+                                                  PanLisL = db11.GENRE.Where(x => x.IdPanier==ANDRANA.IDPANIER).ToList();
+                                              }
+
+                                                <div class="header-wrapicon2">
+                                                    <img src="~/Content/images/icons/icon-header-02.png" class="header-icon1 js-show-header-dropdown" alt="ICON">
+                                                  
+                                                    <span class="header-icons-noti">@PanLisL.Count()</span>
+                                                  
+
+                                                    <!-- Header cart noti -->
+                                                    <div class="header-cart header-dropdown">
+                                                        <ul class="header-cart-wrapitem">
+                                                            @foreach(var h in PanLisL) { 
+                                                            <li class="header-cart-item">
+                                                                <div class="header-cart-item-img">
+                                                                    <img src="@Url.Content(h.Image)" alt="IMG">
+                                                                </div>
+
+                                                                <div class="header-cart-item-txt">
+                                                                    <a href="#" class="header-cart-item-name">
+                                                                       @h.NomGenre
+                                                                    </a>
+
+                                                                    <span class="header-cart-item-info">
+                                                                        @h.Prix
+                                                                    </span>
+                                                                </div>
+                                                            </li>
+                                                            }
+                                                       
+                                                        </ul>
+
+                                                    </div>
+                                                </div>
+</div>
+            </div>
+        </div>
+
+        <!-- Header Mobile -->
+        <div class="wrap_header_mobile">
+            <!-- Logo moblie -->
+            <a href="index.html" class="logo-mobile">
+                <img src="~/Content/images/icons/logo.png" alt="IMG-LOGO">
+            </a>
+
+            <!-- Button show menu -->
+            <div class="btn-show-menu">
+                <!-- Header Icon mobile -->
+                <div class="header-icons-mobile">
+                    <a href="#" class="header-wrapicon1 dis-block">
+                        <img src="images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
+                    </a>
+
+                    <span class="linedivide2"></span>
+
+                    <div class="header-wrapicon2">
+                        <img src="~/Content/images/icons/icon-header-02.png" class="header-icon1 js-show-header-dropdown" alt="ICON">
+                        <span class="header-icons-noti">0</span>
+
+                        <!-- Header cart noti -->
+                        <div class="header-cart header-dropdown">
+                            <ul class="header-cart-wrapitem">
+                                <li class="header-cart-item">
+                                    <div class="header-cart-item-img">
+                                        <img src="~/Content/images/item-cart-01.jpg" alt="IMG">
+                                    </div>
+
+                                    <div class="header-cart-item-txt">
+                                        <a href="#" class="header-cart-item-name">
+                                            White Shirt With Pleat Detail Back
+                                        </a>
+
+                                        <span class="header-cart-item-info">
+                                            1 x $19.00
+                                        </span>
+                                    </div>
+                                </li>
+
+                            </ul>
+
+                            <div class="header-cart-total">
+                                Total: $75.00
+                            </div>
+
+                            <div class="header-cart-buttons">
+                                <div class="header-cart-wrapbtn">
+                                    <!-- Button -->
+                                    <a href="" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+                                        Details
+                                    </a>
+                                </div>
+
+                                <div class="header-cart-wrapbtn">
+                                  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="btn-show-menu-mobile hamburger hamburger--squeeze">
+                    <span class="hamburger-box">
+                        <span class="hamburger-inner"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu Mobile -->
+        <div class="wrap-side-menu">
+            <nav class="side-menu">
+                <ul class="main-menu">
+                  
+
+                    <li class="item-menu-mobile">
+                        <a href="index.html">Accueil</a>
+                       
+                        <i class="arrow-main-menu fa fa-angle-right" aria-hidden="true"></i>
+                    </li>
+
+                    <li class="item-menu-mobile">
+                        <a href="product.html">Boutique</a>
+                    </li>
+
+                    <li class="item-menu-mobile">
+                        <a href="product.html">Remise</a>
+                    </li>
+
+                    <li class="item-menu-mobile">
+                        <a href="cart.html">Nouveautés</a>
+                    </li>
+
+
+                    <li class="item-menu-mobile">
+                        <a href="about.html">A propos</a>
+                    </li>
+
+                    <li class="item-menu-mobile">
+                        <a href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+   
+    @RenderBody()
+    <hr />
+    <footer class="bg6 p-t-45 p-b-43 p-l-45 p-r-45" style="background-color: #ffc72a;">
+        <div class="flex-w p-b-90">
+            <div class="w-size6 p-t-30 p-l-15 p-r-15 respon3" style="width:40%">
+            
+
+                <div>
+                   
+
+                    <div class="flex-m p-t-30">
+                        <a href="#" class="fs-18 color1 p-r-20 fa fa-facebook"></a>
+                        <a href="#" class="fs-18 color1 p-r-20 fa fa-instagram"></a>
+                        <a href="#" class="fs-18 color1 p-r-20 fa fa-pinterest-p"></a>
+                        <a href="#" class="fs-18 color1 p-r-20 fa fa-snapchat-ghost"></a>
+                        <a href="#" class="fs-18 color1 p-r-20 fa fa-youtube-play"></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-size7 p-t-30 p-l-15 p-r-15 respon4" style="width:40%">
+                <h4 class="s-text12 p-b-30" style="color: #104e8b;">
+                    Categories
+                </h4>
+
+                <ul>
+                    <li class="p-b-9">
+                        <a href="#" class="s-text7"style="color: #104e8b;">
+                            Hommes
+                        </a>
+                    </li>
+
+                    <li class="p-b-9">
+                        <a href="#" class="s-text7"style="color: #104e8b;">
+                            Femmes
+                        </a>
+                    </li>
+
+                    <li class="p-b-9">
+                        <a href="#" class="s-text7"style="color: #104e8b;">
+                            Robes
+                        </a>
+                    </li>
+
+                    <li class="p-b-9">
+                        <a href="#" class="s-text7"style="color: #104e8b;">
+                            Tennis
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="w-size7 p-t-30 p-l-15 p-r-15 respon4">
+                <h4 class="s-text12 p-b-30"style="color: #104e8b;">
+                    Lien
+                </h4>
+
+                <ul>
+                    <li class="p-b-9">
+                        <a href="#" class="s-text7"style="color: #104e8b;">
+                            Recherche
+                        </a>
+                    </li>
+
+                    <li class="p-b-9">
+                        <a href="#" class="s-text7"style="color: #104e8b;">
+                            A propos
+                        </a>
+                    </li>
+
+                    <li class="p-b-9">
+                        <a href="#" class="s-text7"style="color:#104e8b;">
+                            Contact
+                        </a>
+                    </li>
+
+                    <li class="p-b-9">
+                        <a href="#" class="s-text7"style="color: #104e8b;">
+                            Retour
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+      
+        </div>
+
+        
+    </footer>
+   
+
+    @*@Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)*@
+    <div class="btn-back-to-top bg0-hov" id="myBtn">
+        <span class="symbol-btn-back-to-top">
+            <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+        </span>
+    </div>
+
+    <!-- Container Selection1 -->
+    <div id="dropDownSelect1"></div>
+
+
+
+    <!--===============================================================================================-->
+    <script type="text/javascript" src="~/Content/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script type="text/javascript" src="~/Content/vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script type="text/javascript" src="~/Content/vendor/bootstrap/js/popper.js"></script>
+    <script type="text/javascript" src="~/Content/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script type="text/javascript" src="~/Content/vendor/select2/select2.min.js"></script>
+    <script type="text/javascript">
+		$(".selection-1").select2({
+			minimumResultsForSearch: 20,
+			dropdownParent: $('#dropDownSelect1')
+		});
+    </script>
+    <!--===============================================================================================-->
+    <script type="text/javascript" src="~/Content/vendor/slick/slick.min.js"></script>
+    <script type="text/javascript" src="~/Content/js/slick-custom.js"></script>
+    <!--===============================================================================================-->
+    <script type="text/javascript" src="~/Content/vendor/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+    <script type="text/javascript" src="~/Content/vendor/lightbox2/js/lightbox.min.js"></script>
+    <!--===============================================================================================-->
+    <script type="text/javascript" src="~/Content/vendor/sweetalert/sweetalert.min.js"></script>
+    <script type="text/javascript">
+		$('.block2-btn-addcart').each(function(){
+			var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
+			$(this).on('click', function(){
+				swal(nameProduct, "is added to cart !", "success");
+			});
+		});
+
+		$('.block2-btn-addwishlist').each(function(){
+			var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
+			$(this).on('click', function(){
+				swal(nameProduct, "is added to wishlist !", "success");
+			});
+		});
+    </script>
+
+    <!--===============================================================================================-->
+    <script src="~/Content/js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,239 @@
+﻿@model MyStore.Models.ACHETEUR1
+@using MyStore.Models
+@using Microsoft.AspNet.Identity
+@{
+    ViewBag.Title = "Acheteur";
+}
+
+<h2>@ViewBag.Message</h2>
+ <h2>@ViewBag.Pa</h2>
+<h2>@ViewBag.S2</h2>
+<h2>@ViewBag.S3</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+if( ViewBag.l == "vb")
+    {
+
+<div class="alert alert-success" style="width: 40%;margin-left: 30%;margin-top: 20px;">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Success!</strong> Votre achat est bien reçu
+</div>
+    }
+
+        <div style="margin-left:34%;" class="bo9 w-size18 p-l-40 p-r-40 p-t-30 p-b-38 m-t-30 m-r-0 m-l-auto p-lr-15-sm">
+            <form class="leave-comment">
+                <h4  class="m-text26 p-b-36 p-t-15">
+                    Votre coordonnées
+                </h4>
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @*<label class="radio-inline"><input type="radio" name="Livraison" value="livrer">Livraison à domicile</label>
+                <label class="radio-inline"><input type="radio" name="Livraison" value="recuperer">Récupérer à la boutique</label>*@
+  
+                <div  class="bo4 of-hidden size15 m-b-20">
+
+                    <input class="sizefull s-text7 p-l-22 p-r-22" type="text" name="Nom" placeholder="Nom" required>
+                   
+</div>
+                <div class="bo4 of-hidden size15 m-b-20">
+                    <input class="sizefull s-text7 p-l-22 p-r-22" type="text" name="Prenom" placeholder="Prenom">
+                </div>
+                <div class="bo4 of-hidden size15 m-b-20">
+                    <input class="sizefull s-text7 p-l-22 p-r-22" type="date" data-toggle="tooltip" title="Date de naissance" name="DateNaiss" placeholder="Date de naissance">
+                </div>
+                <div class="bo4 of-hidden size15 m-b-20">
+                    <input class="sizefull s-text7 p-l-22 p-r-22" type="text" name="Adresse" placeholder="Adresse (ex: Antananarivo)" required>
+                </div>
+                <div class="bo4 of-hidden size15 m-b-20">
+                    <input class="sizefull s-text7 p-l-22 p-r-22" type="text" name="NumTel" placeholder="N°Telephone"required>
+                </div>
+                <div class="bo4 of-hidden size15 m-b-20">
+                    <input class="sizefull s-text7 p-l-22 p-r-22" type="email" name="Email" placeholder="E-mail" required>
+                </div>
+                <div class="radio">
+                    @*<label><input type="radio" name="optradio">Option 1</label>*@
+                    <label ><input type="radio" name="Livraison" value="livrer" checked>Livraison à domicile</label>
+                </div>
+                <div class="radio">
+                    @*<label><input type="radio" name="optradio">Option 2</label>*@
+                    <label ><input type="radio" name="Livraison" value="recuperer">Récupérer à la boutique</label>
+                </div>
+                @*<div class="form-group">
+        @Html.LabelFor(model => model.Nom, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Nom, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Nom, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Prenom, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Prenom, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Prenom, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DateNaiss, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.DateNaiss, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.DateNaiss, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Adresse, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Adresse, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Adresse, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.NumTel, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.NumTel, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.NumTel, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>*@
+                <div class="w-size25">
+                    <!-- Button -->
+                    @*<button type="submit" style="margin-left: 50%; margin-bottom: 30%; margin-top: 30% !important;" id="btn2" class="flex-c-m size2 bg1 bo-rad-23 hov1 m-text3 trans-0-4">
+                        Valider
+                    </button>*@
+                    <a style="margin-left: 50%; margin-bottom: 30%; margin-top: 30% !important;" id="btn2" class="flex-c-m size2 bg1 bo-rad-23 hov1 m-text3 trans-0-4" href="" data-toggle="modal" data-target="#myModal">Valider</a>
+                    <div id="myModal" class="modal fade" role="dialog">
+                        <div class="modal-dialog" style="margin-left: -250PX;margin-top: 105px;">
+
+                            <!-- Modal content-->
+                            <div class="modal-content" style="margin-top: 70px;">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Validation</h4>
+                                </div>
+                                <div class="modal-body">
+                                    @{ 
+                                        MyStoreEntities4 df = new MyStoreEntities4();
+                                        List<GENRE> gf = new List<GENRE>();
+                                        gf = df.GENRE.Where(x => x.IdPanier == ANDRANA.IDPANIER).ToList();
+                                    }
+                                    <p>Votre achat sera envoyé à l'administrateur de ce site et aux vendeurs des articles dans votre panier</p>
+                                    <p>Vous pouvez contacter directement boutique :</p>
+                                    @{
+                                        VENDEUR v = new VENDEUR();
+                                        v = df.VENDEUR.Where(x => x.Type == "Admin").First();
+                                        }
+                                    @foreach (var item in gf)
+                                    {
+
+
+                                        List<VENDEUR> vf = new List<VENDEUR>();
+                                        
+                                
+                                        vf = df.VENDEUR.Where(x => x.IdUser == item.IdUser).ToList();
+                                        foreach(var item1 in vf) {
+                                    <p>Boutique: @item1.Magasin</p>
+                                    <p>Contact: @item1.Contact</p>
+
+                                        }
+                                       
+                                    }
+                                    <p>Et contact de  l'administrateur : @v.Contact</p>
+                                </div>
+                                <div class="modal-footer" style="height: 50px;">
+                                    <button type="submit" style="margin-left: 50%; margin-bottom: 30%; margin-top: 30% !important;" id="btn2" class="btn btn-primary" >
+                                        Valider
+                                    </button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+                @*<div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+                </div>*@
+            </form>
+</div>
+
+
+            @*Vrai
+                <div style="margin-left:34%;" class="bo9 w-size18 p-l-40 p-r-40 p-t-30 p-b-38 m-t-30 m-r-0 m-l-auto p-lr-15-sm">
+                    <div class="col-md-6 p-b-30">
+                        <form class="leave-comment">
+                            <h4 style="margin-left: 40%;" class="m-text26 p-b-36 p-t-15">
+                                Création du compte
+                            </h4>
+
+                            <div style="width: 210%;" class="bo4 of-hidden size15 m-b-20">
+                                <input class="sizefull s-text7 p-l-22 p-r-22" type="text" name="Nom" placeholder="Nom" required>
+                            </div>
+
+                            <div style="width: 210%;" class="bo4 of-hidden size15 m-b-20">
+                                <input class="sizefull s-text7 p-l-22 p-r-22" type="text" name="Prenom" placeholder="Prenom" required>
+                            </div>
+                            <div style="width: 210%;" class="bo4 of-hidden size15 m-b-20">
+                                <input class="sizefull s-text7 p-l-22 p-r-22" type="date" name="DateNaiss" placeholder="Prenom">
+                            </div>
+                            <div style="width: 210%;" class="bo4 of-hidden size15 m-b-20">
+                                <input class="sizefull s-text7 p-l-22 p-r-22" type="text" name="Magasin" placeholder="Boutique" required>
+                            </div>
+                            <div style="width: 210%;" class="bo4 of-hidden size15 m-b-20">
+                                <input class="sizefull s-text7 p-l-22 p-r-22" type="email" name="Email" placeholder="Email" required>
+                            </div>
+                            <div style="width: 210%;" class="bo4 of-hidden size15 m-b-20">
+                                <input class="sizefull s-text7 p-l-22 p-r-22" type="text" name="Contact" placeholder="N°Telephone" required>
+                            </div>
+                            <div style="width: 210%;" class="bo4 of-hidden size15 m-b-20">
+                                <input class="sizefull s-text7 p-l-22 p-r-22" type="text" name="Lieu" placeholder="Lieu" required>
+                            </div>
+                            <div style="width: 210%;" class="bo4 of-hidden size15 m-b-20">
+                                <input class="sizefull s-text7 p-l-22 p-r-22" type="password" name="Mdp" placeholder="Mot de passe" required>
+                            </div>
+                            <div style="width: 210%;" class="bo4 of-hidden size15 m-b-20">
+                                <input class="sizefull s-text7 p-l-22 p-r-22" type="password" name="CMdp" placeholder="Confirmation de Mot de passe" required>
+                            </div>
+                            <p class="text-danger">@/*ViewBag.Erreur*/</p>
+
+
+
+                            <div class="w-size25">
+                                <!-- Button -->
+                                <button type="submit" style="margin-left: 50%; margin-bottom: 30%; margin-top: 30% !important;" id="btn2" class="flex-c-m size2 bg1 bo-rad-23 hov1 m-text3 trans-0-4">
+                                    Créer un compte
+                                </button>
+
+                            </div>
+
+
+                        </form>
+                    </div>
+                </div> *@
+                                        }
+
+            <div>
+                @Html.ActionLink("retour", "Index1")
+            </div>
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
+</script>

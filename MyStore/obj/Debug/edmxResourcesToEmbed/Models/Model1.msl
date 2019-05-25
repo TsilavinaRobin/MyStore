@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MyStoreModelStoreContainer" CdmEntityContainer="MyStoreEntities4">
+    <EntitySetMapping Name="ACHETEUR">
+      <EntityTypeMapping TypeName="MyStoreModel.ACHETEUR">
+        <MappingFragment StoreEntitySet="ACHETEUR">
+          <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+          <ScalarProperty Name="DateNaiss" ColumnName="DateNaiss" />
+          <ScalarProperty Name="Adresse" ColumnName="Adresse" />
+          <ScalarProperty Name="NumTel" ColumnName="NumTel" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CATEGORIE">
+      <EntityTypeMapping TypeName="MyStoreModel.CATEGORIE">
+        <MappingFragment StoreEntitySet="CATEGORIE">
+          <ScalarProperty Name="IdCat" ColumnName="IdCat" />
+          <ScalarProperty Name="NomCat" ColumnName="NomCat" />
+          <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GENRE">
+      <EntityTypeMapping TypeName="MyStoreModel.GENRE">
+        <MappingFragment StoreEntitySet="GENRE">
+          <ScalarProperty Name="IdGenre" ColumnName="IdGenre" />
+          <ScalarProperty Name="NomGenre" ColumnName="NomGenre" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Taille" ColumnName="Taille" />
+          <ScalarProperty Name="Prix" ColumnName="Prix" />
+          <ScalarProperty Name="Ref" ColumnName="Ref" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Couleur" ColumnName="Couleur" />
+          <ScalarProperty Name="NbrGenre" ColumnName="NbrGenre" />
+          <ScalarProperty Name="Etat" ColumnName="Etat" />
+          <ScalarProperty Name="IdProd" ColumnName="IdProd" />
+          <ScalarProperty Name="IdPanier" ColumnName="IdPanier" />
+          <ScalarProperty Name="Nouveau" ColumnName="Nouveau" />
+          <ScalarProperty Name="Reduction" ColumnName="Reduction" />
+          <ScalarProperty Name="Prix1" ColumnName="Prix1" />
+          <ScalarProperty Name="Pour" ColumnName="Pour" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+          <ScalarProperty Name="IdCat" ColumnName="IdCat" />
+          <ScalarProperty Name="IdUser1" ColumnName="IdUser1" />
+          <ScalarProperty Name="NbrAch" ColumnName="NbrAch" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PANIER">
+      <EntityTypeMapping TypeName="MyStoreModel.PANIER">
+        <MappingFragment StoreEntitySet="PANIER">
+          <ScalarProperty Name="IdPanier" ColumnName="IdPanier" />
+          <ScalarProperty Name="NbrProPanier" ColumnName="NbrProPanier" />
+          <ScalarProperty Name="DateAchat" ColumnName="DateAchat" />
+          <ScalarProperty Name="PrixTotal" ColumnName="PrixTotal" />
+          <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+          <ScalarProperty Name="Livraison" ColumnName="Livraison" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PRODUIT">
+      <EntityTypeMapping TypeName="MyStoreModel.PRODUIT">
+        <MappingFragment StoreEntitySet="PRODUIT">
+          <ScalarProperty Name="IdProd" ColumnName="IdProd" />
+          <ScalarProperty Name="NomPro" ColumnName="NomPro" />
+          <ScalarProperty Name="NbrPro" ColumnName="NbrPro" />
+          <ScalarProperty Name="IdCat" ColumnName="IdCat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VENDEUR">
+      <EntityTypeMapping TypeName="MyStoreModel.VENDEUR">
+        <MappingFragment StoreEntitySet="VENDEUR">
+          <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+          <ScalarProperty Name="DateNaiss" ColumnName="DateNaiss" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Mdp" ColumnName="Mdp" />
+          <ScalarProperty Name="Magasin" ColumnName="Magasin" />
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Autorisation" ColumnName="Autorisation" />
+          <ScalarProperty Name="Lieu" ColumnName="Lieu" />
+          <ScalarProperty Name="IdCat" ColumnName="IdCat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
